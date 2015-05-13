@@ -1,0 +1,13 @@
+coverage
+logs
+node_modules
+test
+
+.DS_Store
+.idea
+.gitignore
+.jshintignore
+.jshintrc
+.travis.yml
+app.js
+Gruntfile.js

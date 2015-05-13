@@ -1,0 +1,52 @@
+{
+  "name": "appc.elasticsearch",
+  "description": "Elasticsearch connector for Arrow",
+  "version": "1.0.0",
+  "author": "Isaac Whitfield",
+  "license": "Apache-2.0",
+  "framework": "none",
+  "keywords": [
+    "arrow",
+    "arrow-connector",
+    "appcelerator",
+    "elasticsearch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:appcelerator/appc.elasticsearch.git"
+  },
+  "private": true,
+  "dependencies": {
+    "async": "~0.9.0",
+    "elasticsearch": "~4.0.2",
+    "lodash": "^2.4.1",
+    "pkginfo": "^0.3.0"
+  },
+  "devDependencies": {
+    "arrow": "*",
+    "blanket": "^1.1.6",
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-mocha-cov": "^0.4.0",
+    "grunt-mocha-test": "^0.12.0",
+    "mocha": "^1.21.4",
+    "should": "^4.0.4"
+  },
+  "scripts": {
+    "coverage": "grunt coverage",
+    "start": "node app",
+    "test": "grunt"
+  },
+  "config": {
+    "blanket": {
+      "data-cover-never": [
+        "node_modules",
+        "test"
+      ],
+      "pattern": [
+        "lib"
+      ]
+    }
+  }
+}
