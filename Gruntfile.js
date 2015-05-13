@@ -4,8 +4,8 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		mochacov: {
 			options: {
-				slow: 1000,
-				timeout: 10000,
+				slow: 5000,
+				timeout: 15000,
 				reporter: 'html-cov',
 				output: 'coverage/index.html'
 			},
@@ -13,8 +13,8 @@ module.exports = function(grunt) {
 		},
 		mochaTest: {
 			options: {
-				slow: 1000,
-				timeout: 10000,
+				slow: 5000,
+				timeout: 15000,
 				reporter: 'spec',
 				ignoreLeaks: false
 			},
