@@ -79,10 +79,10 @@ describe('appc.elasticsearch', function() {
 
     });
 
-    describe('#findOne', function(){
+    describe('#findByID', function(){
 
         it('should handle bad ids', function(next) {
-            TestModel.findOne('a_bad_id', function(err) {
+            TestModel.findByID('a_bad_id', function(err) {
                 should(err).be.ok;
                 next();
             });
@@ -101,7 +101,7 @@ describe('appc.elasticsearch', function() {
                 should(createdInstance).be.an.Object;
 
                 var id = createdInstance.getPrimaryKey();
-                TestModel.findOne(id, function(err, foundInstance) {
+                TestModel.findByID(id, function(err, foundInstance) {
                     should(err).not.be.ok;
                     should(foundInstance).be.an.Object;
 
@@ -128,13 +128,13 @@ describe('appc.elasticsearch', function() {
                 should(err).not.be.ok;
                 should(createdInstance).be.an.Object;
 
-                TestModel.findOne({
+                TestModel.findByID({
                     random: {
                         field: 1
                     }
                 }, function (err) {
                     should(err).be.ok;
-                    should(err.message.indexOf('unexpected value for findOne')).be.greaterThan(-1);
+                    should(err.message.indexOf('unexpected value for findByID')).be.greaterThan(-1);
 
                     next();
                 });
