@@ -334,6 +334,7 @@ describe('appc.elasticsearch', function() {
     });
 
     describe('#findAll', function() {
+        this.timeout(15000);
 
         it('should find all instances', function(next) {
 
