@@ -27,6 +27,15 @@ describe('appc.elasticsearch', function() {
         });
     });
 
+    afterEach(function(next){
+        TestModel.deleteAll(function(err){
+            if(err){
+                return next(err);
+            }
+            next();
+        });
+    });
+
     describe('#create', function(){
 
         it('should create instances', function(next) {
@@ -547,19 +556,6 @@ describe('appc.elasticsearch', function() {
 
         });
 
-    });
-
-    afterEach(function(next){
-        TestModel.deleteAll(function(err){
-            if(err){
-                return next(err);
-            }
-            TestModel.getConnector().client.indices.delete({
-                index: TestModel.getConnector().config.index
-            }, function(){
-                next();
-            });
-        });
     });
 
 });
