@@ -343,7 +343,7 @@ describe('appc.elasticsearch', function() {
     });
 
     describe('#findAll', function() {
-        this.timeout(15000);
+        this.timeout(60000);
 
         it('should find all instances', function(next) {
 
@@ -362,7 +362,7 @@ describe('appc.elasticsearch', function() {
                     }, function(err, record){
                         should(err).not.be.ok;
                         should(record).be.an.Object;
-                        callback();
+                        callback(null, count);
                     });
                 },
                 function (err) {
@@ -398,7 +398,7 @@ describe('appc.elasticsearch', function() {
                     }, function(err, record){
                         should(err).not.be.ok;
                         should(record).be.an.Object;
-                        callback();
+                        callback(null, count);
                     });
                 },
                 function (err) {
