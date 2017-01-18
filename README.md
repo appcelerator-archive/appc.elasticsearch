@@ -5,7 +5,7 @@ This is an Arrow connector for Elasticsearch.
 ## Installation
 
 ```bash
-$ appc install connector/appc.elasticsearch --save
+$ appc install connector/appc.elasticsearch
 ```
 
 ## Usage
