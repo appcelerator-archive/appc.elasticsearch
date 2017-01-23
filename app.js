@@ -24,7 +24,12 @@ var users = [
 ];
 
 // start the server
-server.start(function () {
+server.start(function (err) {
+    if (err) {
+		return server.logger.fatal(err);
+	}
+	server.logger.info('server started on port', server.port);
+
     var User = Arrow.Model.extend('user', {
         fields: {
             name: { type: String, required: false, validator: /[a-zA-Z]{3,}/ }
@@ -33,6 +38,11 @@ server.start(function () {
     });
 
     User.create(users, function(err, users){
-        server.logger.info('Created some users', users);
+        if (err) {
+			server.logger.error(err);
+		}
+		else {
+            server.logger.info('Created some users');
+        }
     });
 });

@@ -27,6 +27,15 @@ describe('appc.elasticsearch', function() {
         });
     });
 
+    afterEach(function(next){
+        TestModel.deleteAll(function(err){
+            if(err){
+                return next(err);
+            }
+            next();
+        });
+    });
+
     describe('#create', function(){
 
         it('should create instances', function(next) {
@@ -79,10 +88,10 @@ describe('appc.elasticsearch', function() {
 
     });
 
-    describe('#findOne', function(){
+    describe('#findByID', function(){
 
         it('should handle bad ids', function(next) {
-            TestModel.findOne('a_bad_id', function(err) {
+            TestModel.findByID('a_bad_id', function(err) {
                 should(err).be.ok;
                 next();
             });
@@ -101,7 +110,7 @@ describe('appc.elasticsearch', function() {
                 should(createdInstance).be.an.Object;
 
                 var id = createdInstance.getPrimaryKey();
-                TestModel.findOne(id, function(err, foundInstance) {
+                TestModel.findByID(id, function(err, foundInstance) {
                     should(err).not.be.ok;
                     should(foundInstance).be.an.Object;
 
@@ -128,13 +137,13 @@ describe('appc.elasticsearch', function() {
                 should(err).not.be.ok;
                 should(createdInstance).be.an.Object;
 
-                TestModel.findOne({
+                TestModel.findByID({
                     random: {
                         field: 1
                     }
                 }, function (err) {
                     should(err).be.ok;
-                    should(err.message.indexOf('unexpected value for findOne')).be.greaterThan(-1);
+                    should(err.message.indexOf('unexpected value for findByID')).be.greaterThan(-1);
 
                     next();
                 });
@@ -334,6 +343,7 @@ describe('appc.elasticsearch', function() {
     });
 
     describe('#findAll', function() {
+        this.timeout(60000);
 
         it('should find all instances', function(next) {
 
@@ -352,7 +362,7 @@ describe('appc.elasticsearch', function() {
                     }, function(err, record){
                         should(err).not.be.ok;
                         should(record).be.an.Object;
-                        callback();
+                        callback(null, count);
                     });
                 },
                 function (err) {
@@ -388,7 +398,7 @@ describe('appc.elasticsearch', function() {
                     }, function(err, record){
                         should(err).not.be.ok;
                         should(record).be.an.Object;
-                        callback();
+                        callback(null, count);
                     });
                 },
                 function (err) {
@@ -546,19 +556,6 @@ describe('appc.elasticsearch', function() {
 
         });
 
-    });
-
-    afterEach(function(next){
-        TestModel.deleteAll(function(err){
-            if(err){
-                return next(err);
-            }
-            TestModel.getConnector().client.indices.delete({
-                index: TestModel.getConnector().config.index
-            }, function(){
-                next();
-            });
-        });
     });
 
 });
