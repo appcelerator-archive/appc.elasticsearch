@@ -27,6 +27,9 @@ node_modules
 # idea
 .idea
 
+#vscode
+.vscode
+
 # OS X
 .DS_Store
 
