@@ -1,7 +1,7 @@
 {
   "name": "appc.elasticsearch",
   "description": "Elasticsearch connector for Arrow",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "author": "Isaac Whitfield",
   "license": "Apache-2.0",
   "framework": "none",
@@ -25,16 +25,32 @@
   "devDependencies": {
     "arrow": "1.8.11",
     "grunt": "0.4.5",
-    "grunt-contrib-clean": "0.6.0",
-    "grunt-contrib-jshint": "0.10.0",
     "grunt-mocha-test": "0.12.0",
     "jshint": "2.8.0",
     "mocha": "1.21.4",
-    "should": "4.0.4"
+    "mockery": "2.0.0",
+    "nsp": "2.6.3",
+    "nyc": "10.2.0",
+    "retire": "1.2.12",
+    "rimraf": "2.6.1",
+    "should": "4.0.4",
+    "sinon": "2.1.0",
+    "standard": "10.0.0",
+    "tap": "10.3.1"
   },
   "scripts": {
-    "lint": "grunt lint",
-    "start": "node app",
-    "test": "grunt test"
+    "start": "appc run",
+    "lint": "standard --fix",
+    "security": "retire --exitwith 0 --outputpath scan-retire.txt && nsp check --output writefile --warn-only",
+    "clean": "rimraf ./tmp",
+    "test": "npm run lint && npm run security && npm run test:unit && npm run clean",
+    "test:coverage": "nyc check-coverage --lines 90 --functions 90 --branches 70 --statements 90",
+    "test:unit": "tap ./test/unit/* --color --bail --coverage --coverage-report=html && npm run test:coverage",
+    "test:integration": "grunt"
+  },
+  "standard": {
+    "ignore": [
+      "test/integration/**"
+    ]
   }
 }
