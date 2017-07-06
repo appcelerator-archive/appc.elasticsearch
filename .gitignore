@@ -2,7 +2,6 @@
 logs
 *.log
 npm-debug.log
-scan-retire.txt
 
 # Runtime data
 pids
@@ -35,3 +34,10 @@ node_modules
 
 # Configs
 conf/default.js
+
+# retire and nsp files
+scan-nsp.json
+scan-retire.json
+
+# Others
+dist
