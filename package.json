@@ -50,7 +50,7 @@
     "build:dev": "npm run build:dist",
     "build:dist": "babel -d ./dist ./lib",
     "lint": "standard --fix",
-		"security": "nsp check --output json > scan-nsp.json",
+		"security": "retire --exitwith 0 --outputpath scan-retire.json && nsp check --output json > scan-nsp.json",
 		"clean": "rimraf ./tmp && rimraf dist/* coverage/*",
     "test": "npm run security && npm run test:unit && npm run clean",
     "test:coverage": "nyc check-coverage --lines 90 --functions 90 --branches 70 --statements 90",
