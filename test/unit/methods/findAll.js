@@ -33,7 +33,7 @@ test('### Should return all records ###', function (t) {
   const cbSpy = sandbox.spy()
 
   // Mocks
-  const queryMock = sandbox.mock(connector).expects('query').once().withArgs(testModel, {limit: 1000}, cbSpy).yieldsAsync()
+  const queryMock = sandbox.mock(connector).expects('query').once().withArgs(testModel, { limit: 1000 }, cbSpy).yieldsAsync()
 
   // Function call
   method.call(connector, testModel, cbSpy)
@@ -62,7 +62,7 @@ test('### Should return an error ###', function (t) {
   const cbSpy = sandbox.spy()
 
   // Mocks
-  const queryMock = sandbox.mock(connector).expects('query').once().withArgs(testModel, {limit: 1000}, cbSpy).yieldsAsync(err)
+  const queryMock = sandbox.mock(connector).expects('query').once().withArgs(testModel, { limit: 1000 }, cbSpy).yieldsAsync(err)
 
   // Function call
   method.call(connector, testModel, cbSpy)

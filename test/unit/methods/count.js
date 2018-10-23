@@ -36,7 +36,7 @@ test('### Should return a count ###', (t) => {
   const getIndexStub = sandbox.stub(connector, 'getIndex').returns(5)
   const getTypeStub = sandbox.stub(connector, 'getType').returns('string')
   // Mocks
-  const countMock = sandbox.mock(connector.client).expects('count').once().withArgs({index: 5, type: 'string'}).yieldsAsync(null, { count: 5 })
+  const countMock = sandbox.mock(connector.client).expects('count').once().withArgs({ index: 5, type: 'string' }).yieldsAsync(null, { count: 5 })
   // Spies
   const cbSpy = sandbox.spy()
 
@@ -70,7 +70,7 @@ test('### Should return an error ###', (t) => {
   const getIndexStub = sandbox.stub(connector, 'getIndex').returns(5)
   const getTypeStub = sandbox.stub(connector, 'getType').returns('string')
   // Mocks
-  const countMock = sandbox.mock(connector.client).expects('count').once().withArgs({index: 5, type: 'string'}).yieldsAsync(err)
+  const countMock = sandbox.mock(connector.client).expects('count').once().withArgs({ index: 5, type: 'string' }).yieldsAsync(err)
   // Spies
   const cbSpy = sandbox.spy()
 

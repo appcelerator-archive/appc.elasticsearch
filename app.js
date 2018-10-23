@@ -16,11 +16,11 @@ server.on('started', function () {
 
 // create some users programmatically
 var users = [
-    {name: 'Jeff'},
-    {name: 'Nolan'},
-    {name: 'Dawson'},
-    {name: 'Rick'},
-    {name: 'Isaac'}
+  { name: 'Jeff' },
+  { name: 'Nolan' },
+  { name: 'Dawson' },
+  { name: 'Rick' },
+  { name: 'Isaac' }
 ]
 
 // start the server
